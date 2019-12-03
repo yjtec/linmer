@@ -1,0 +1,112 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "97dbafa7e73a7632e45d70330f45e5c9",
+    "packages": [
+        {
+            "name": "yjtec/linmodel",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yjtec/linmodel.git",
+                "reference": "c9e603686b1bebb06b9f59db040df06ab9377628"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yjtec/linmodel/zipball/c9e603686b1bebb06b9f59db040df06ab9377628",
+                "reference": "c9e603686b1bebb06b9f59db040df06ab9377628",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "ext-pdo_mysql": ">5.0",
+                "php": ">5.6",
+                "yjtec/lintools": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Yjtec\\Linmodel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ax",
+                    "email": "18716463@qq.com"
+                }
+            ],
+            "description": "数据库操作",
+            "keywords": [
+                "cache",
+                "linphe"
+            ],
+            "time": "2019-12-03T01:43:11+00:00"
+        },
+        {
+            "name": "yjtec/lintools",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yjtec/lintools.git",
+                "reference": "537674c2a789d212bc89792204d3ddbe86dc8d26"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yjtec/lintools/zipball/537674c2a789d212bc89792204d3ddbe86dc8d26",
+                "reference": "537674c2a789d212bc89792204d3ddbe86dc8d26",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Yjtec\\Lintools\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ax",
+                    "email": "18716463@qq.com"
+                }
+            ],
+            "description": "工具类",
+            "keywords": [
+                "linphe",
+                "tool"
+            ],
+            "time": "2019-09-26T03:10:39+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
