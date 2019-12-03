@@ -1,6 +1,6 @@
 <?php
 
-use lib\Core\Core;
+use Yjtec\Linphe\Core;
 
 require_once 'vendor/autoload.php';
 require_once 'cfg/route.php';

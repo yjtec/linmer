@@ -4,6 +4,10 @@
     "type": "project",
     "license": "Apache",
     "require": {
+        "yjtec/linphe": "*",
+        "yjtec/lincontroller": "*",
+        "yjtec/linmodel": "*",
+        "yjtec/linview": "*",
         "yjtec/linmodel": "*"
     },
     "authors": [

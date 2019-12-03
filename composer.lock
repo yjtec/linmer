@@ -4,8 +4,56 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "97dbafa7e73a7632e45d70330f45e5c9",
+    "content-hash": "5f020f3b6c3e493009b560a4ae7a65e5",
     "packages": [
+        {
+            "name": "yjtec/lincontroller",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yjtec/lincontroller.git",
+                "reference": "c93ab524ec23b9aeb4f012675ee127660a4bab14"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yjtec/lincontroller/zipball/c93ab524ec23b9aeb4f012675ee127660a4bab14",
+                "reference": "c93ab524ec23b9aeb4f012675ee127660a4bab14",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">5.6",
+                "yjtec/lintools": "*",
+                "yjtec/linview": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Yjtec\\LinController\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ax",
+                    "email": "18716463@qq.com"
+                }
+            ],
+            "description": "控制器",
+            "keywords": [
+                "controller",
+                "linphe"
+            ],
+            "time": "2019-09-26T03:39:49+00:00"
+        },
         {
             "name": "yjtec/linmodel",
             "version": "dev-master",
@@ -55,6 +103,52 @@
             "time": "2019-12-03T01:43:11+00:00"
         },
         {
+            "name": "yjtec/linphe",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yjtec/linphe.git",
+                "reference": "67e23e039a83ca7c89dd2292bcfbad797855753c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yjtec/linphe/zipball/67e23e039a83ca7c89dd2292bcfbad797855753c",
+                "reference": "67e23e039a83ca7c89dd2292bcfbad797855753c",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Yjtec\\Linphe\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ax",
+                    "email": "18716463@qq.com"
+                }
+            ],
+            "description": "Linphe框架",
+            "keywords": [
+                "framework",
+                "linphe"
+            ],
+            "time": "2019-10-21T08:28:58+00:00"
+        },
+        {
             "name": "yjtec/lintools",
             "version": "dev-master",
             "source": {
@@ -99,6 +193,52 @@
                 "tool"
             ],
             "time": "2019-09-26T03:10:39+00:00"
+        },
+        {
+            "name": "yjtec/linview",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yjtec/linview.git",
+                "reference": "095d28615a34ef98939d33e9e0883375c04c65f8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yjtec/linview/zipball/095d28615a34ef98939d33e9e0883375c04c65f8",
+                "reference": "095d28615a34ef98939d33e9e0883375c04c65f8",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Yjtec\\Linview\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ax",
+                    "email": "18716463@qq.com"
+                }
+            ],
+            "description": "Linphe框架的模板层",
+            "keywords": [
+                "linphe",
+                "view"
+            ],
+            "time": "2019-09-26T06:18:16+00:00"
         }
     ],
     "packages-dev": [],

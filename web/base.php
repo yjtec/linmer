@@ -2,7 +2,9 @@
 
 namespace web;
 
-class base {
+use Yjtec\LinController\Controller;
+
+class base extends Controller {
 
     public function __construct() {
         

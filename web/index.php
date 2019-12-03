@@ -2,8 +2,6 @@
 
 namespace web;
 
-use lib\Core\View;
-
 class index extends base {
 
     public function __construct() {
@@ -11,7 +9,7 @@ class index extends base {
     }
 
     public function index() {
-        return View::display();
+        $this->display();
     }
 
 }

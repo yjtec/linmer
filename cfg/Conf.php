@@ -21,7 +21,6 @@ class Conf {
         'db_prefix' => ''
     ];
     const ServerHost = '0.0.0.0';
-    const Port = ['http' => 9501, 'tcp' => 9502, 'web' => 9503];
-    const WebPort = 9503;
+    const Port = ['http' => 9501, 'tcp' => 9502];
 
 }
