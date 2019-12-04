@@ -6,7 +6,6 @@
     "require": {
         "yjtec/linphe": "*",
         "yjtec/lincontroller": "*",
-        "yjtec/linmodel": "*",
         "yjtec/linview": "*",
         "yjtec/linmodel": "*"
     },
