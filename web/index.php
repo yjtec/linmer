@@ -9,6 +9,8 @@ class index extends base {
     }
 
     public function index() {
+        $svc = \lib\service\service::getInstance();
+        $i = $svc->get();
         $this->display();
     }
 

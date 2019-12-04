@@ -15,21 +15,48 @@ use Swoole\WebSocket\Server as Server2;
  */
 class server {
 
+    public $uni;
+    public $ws_http_server;
+
+    public function __construct() {
+        $this->uni = new uni();
+        $this->ws_http_server = new Server2(Conf::ServerHost, Conf::Port['http'], SWOOLE_PROCESS, SWOOLE_SOCK_TCP);
+        $this->ws_http_server->set(array('open_http_protocol' => true));
+    }
+
     public function start() {
-        $ws = new Server2(Conf::ServerHost, Conf::Port['http'], SWOOLE_PROCESS, SWOOLE_SOCK_TCP);
-        $ws->set(array('open_http_protocol' => true));
+        $this->bindWs();
+        $this->bindWork();
+        $this->bindHttp();
+        $this->bindTcp();
+        $this->ws_http_server->start();
+    }
+
+    public function bindWs() {
         $wss = new ws();
-        $ws->on('Open', [$wss, 'open']);
-        $ws->on('Message', [$wss, 'msg']);
-        $ws->on('Close', [$wss, 'cls']);
-        $ws->on('WorkerStart', [new worker(), 'start']);
-        $ws->on('Request', [new http(), 'req']);
-        $server = $ws->addlistener(Conf::ServerHost, Conf::Port['tcp'], SWOOLE_SOCK_TCP);
+        $wss->uni = $this->uni;
+        $this->ws_http_server->on('Open', [$wss, 'open']);
+        $this->ws_http_server->on('Message', [$wss, 'msg']);
+        $this->ws_http_server->on('Close', [$wss, 'cls']);
+    }
+
+    public function bindHttp() {
+        $http = new http();
+        $http->uni = $this->uni;
+        $this->ws_http_server->on('Request', [$http, 'req']);
+    }
+
+    public function bindTcp() {
+        $server = $this->ws_http_server->addlistener(Conf::ServerHost, Conf::Port['tcp'], SWOOLE_SOCK_TCP);
         $tcp = new tcp();
+        $tcp->uni = $this->uni;
         $server->on('Connect', [$tcp, 'conn']);
         $server->on('Receive', [$tcp, 'recv']);
         $server->set([]);
-        $ws->start();
+    }
+
+    public function bindWork() {
+        $this->ws_http_server->on('WorkerStart', [new worker(), 'start']);
     }
 
 }

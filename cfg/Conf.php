@@ -10,17 +10,18 @@ namespace cfg;
 class Conf {
 
     const CUR_ENV = 'dev.';
-    const UP_OSS = false;
     const DB_CNF = [
-        'db_type' => 'pdo',
-        'db_user' => 'newup',
-        'db_pwd' => 'newup',
-        'db_host' => '192.168.1.6',
-        'db_port' => '3306',
-        'db_name' => 'newup',
-        'db_prefix' => ''
+        'host' => '127.0.0.1',
+        'port' => '6379',
+        'prefix' => 'linmer_'
     ];
     const ServerHost = '0.0.0.0';
     const Port = ['http' => 9501, 'tcp' => 9502];
+    const ServiceHeartBeatTime = 1000;
+    const ConsumerDispatchTime = 1000;
 
+//    const PlantformService = 'service';
+//    const PlantformConsumer = 'consumer';
+//    const ServiceEvent = ['register', 'delete', 'update', 'check'];
+//    const ConsumerEvent = ['register', 'update'];
 }
