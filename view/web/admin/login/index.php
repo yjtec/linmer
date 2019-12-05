@@ -51,7 +51,7 @@
                             <h3 class="panel-title">登录</h3>
                         </div>
                         <div class="panel-body">
-                            <form method="POST" action="/doLogin">
+                            <form method="POST" action="/admin/login">
                                 <fieldset>
                                     <div class="form-group">
                                         <input class="form-control" placeholder="账号" name="acc"  autofocus>

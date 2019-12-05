@@ -1,6 +1,6 @@
 <?php
 
-namespace web;
+namespace web\admin;
 
 use Yjtec\LinController\Controller;
 
@@ -20,12 +20,18 @@ class login extends Controller {
         $admSvc = new \lib\admin();
         $admin = $admSvc->checkAdmin($data['acc'], $data['pwd']);
         if (!$admin) {
-            header('Location:/login?err=fail');
+            header('Location:/admin/login?err=fail');
             exit();
         }
         session_start();
         $_SESSION['admin'] = json_encode($admin);
-        header('Location:/index');
+        header('Location:/admin/index');
+    }
+
+    public function logout() {
+        session_start();
+        session_destroy();
+        header('Location:/admin/index');
     }
 
 }

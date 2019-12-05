@@ -16,7 +16,7 @@
             <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
         </a>
         <ul class="dropdown-menu dropdown-user">
-            <li><a><i class="fa fa-user fa-fw"></i> <?php echo $adminInfo['name']; ?></a></li>
+            <li><a><i class="fa fa-user fa-fw"></i> <?php echo $adminInfo['acc']; ?></a></li>
             <li><a href="/admin/upPwd"><i class="fa fa-gear fa-fw"></i> 修改密码</a></li>
             <li class="divider"></li>
             <li><a href="/admin/logout"><i class="fa fa-sign-out fa-fw"></i> 退出</a></li>

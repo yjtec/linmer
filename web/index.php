@@ -2,14 +2,20 @@
 
 namespace web;
 
-class index extends base {
+/**
+ * Description of index
+ *
+ * @author KKnV_GU
+ */
+class index {
 
     public function __construct() {
-        parent::__construct();
+        
     }
 
-    public function index() {
-        $this->display();
+    public function __call($name, $arguments) {
+        header("Location:/admin/index");
+        exit;
     }
 
 }

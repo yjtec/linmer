@@ -19,17 +19,18 @@ class admin {
 
     public function checkAdmin($acc, $pwd) {
         $admin = $this->adm->getByAcc($acc);
-        if (!$admin) {
-            return false;
+        if ($admin && $this->adm->cPwd($admin['acc'], $pwd, $admin['salt']) == $admin['pwd']) {
+            return $admin;
         }
-        if (!$this->adm->cPwd($admin['acc'], $pwd, $admin['salt']) == $admin['pwd']) {
-            return false;
-        }
-        return $admin;
+        return false;
     }
 
     public function add($acc, $pwd) {
         return $this->adm->add($acc, $pwd);
+    }
+
+    public function updatePwd($acc, $pwd) {
+        return $this->adm->updatePwd($acc, $pwd);
     }
 
 }
