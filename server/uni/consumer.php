@@ -9,57 +9,51 @@ use server\uni\db\redis;
  *
  * @author Administrator
  */
-class consumer {
+class consumer extends platform {
 
     public static $platform = 'consumer';
 
     public static function add($group, $host, $data) {
-        $key = self::getKey($group, $host);
         $data['status'] = 1;
-        redis::addHash($key, $data, self::$platform);
+        parent::add($group, $host, $data);
         return service::getGroup($data['service']);
     }
 
     public static function update($group, $host, $data) {
+        parent::update($group, $host, $data);
+        return service::getGroup($data['service']);
+    }
+
+    /**
+     * 服务更新的时候，加入通知表
+     * @param type $group
+     * @param type $host
+     */
+    public static function addDispatch($group, $host) {
         $key = self::getKey($group, $host);
-        redis::updateHash($key, $data, self::$platform);
-        return $key;
-    }
-
-    public static function del($group, $host) {
-        $key = self::getKey($group, $host);
-        redis::delHash($key, self::$platform);
-        return 1;
-    }
-
-    public static function get($group, $host) {
-        $key = self::getKey($group, $host);
-        $data = redis::getHash($key, self::$platform);
-        return empty($data) ? [] : json_decode($data, true);
-    }
-
-    public static function getAll() {
-        return redis::getAllHash(self::$platform);
-    }
-
-    public static function getKey($group, $host) {
-        return md5($group . $host);
-    }
-
-    public static function addDispatch($key) {
         redis::delHash($key, 'dispatch');
-        redis::addHash($key, ['time' => time()], 'dispatch');
+        $consumerKey = [];
+        $consumers = self::getAll();
+        foreach ($consumers as $key => $consumer) {
+            $csm = json_decode($consumer, true);
+            if (in_array($group, $csm["service"]) && isset($csm['dispatch_enable']) && $csm['dispatch_enable']) {
+                $consumerKey[] = $key;
+            }
+        }
+        if (!empty($consumerKey)) {
+            $data = ['key' => $key, 'time' => time(), 'consumer' => $consumerKey];
+            redis::addHash($key, $data, 'dispatch');
+        }
     }
 
     /**
      * 服务更新，通知给订阅的消费者
      */
     public static function dispatch() {
-        $ds = redis::getAllHash('dispatch');
-//        $consumers = self::getAll();
-//        foreach ($services as $key => $service) {
-//            self::startHeartBeat(json_decode($service, true));
-//        }
+        $dispatch = redis::getAllHash('dispatch');
+        foreach ($dispatch as $key => $ds) {
+            var_dump($ds);
+        }
     }
 
 }
