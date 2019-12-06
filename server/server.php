@@ -25,14 +25,17 @@ class server {
     }
 
     public function start() {
+        slog::showLog('初始化');
         $this->bindWs();
         $this->bindWork();
         $this->bindHttp();
         $this->bindTcp();
+        slog::showLog('初始化完成，准备开始');
         $this->ws_http_server->start();
     }
 
     public function bindWs() {
+        slog::showLog('绑定ws');
         $wss = new ws();
         $wss->uni = $this->uni;
         $this->ws_http_server->on('Open', [$wss, 'open']);
@@ -41,12 +44,14 @@ class server {
     }
 
     public function bindHttp() {
+        slog::showLog('绑定http');
         $http = new http();
         $http->uni = $this->uni;
         $this->ws_http_server->on('Request', [$http, 'req']);
     }
 
     public function bindTcp() {
+        slog::showLog('绑定tcp');
         $server = $this->ws_http_server->addlistener(Conf::ServerHost, Conf::Port['tcp'], SWOOLE_SOCK_TCP);
         $tcp = new tcp();
         $tcp->uni = $this->uni;
@@ -56,6 +61,7 @@ class server {
     }
 
     public function bindWork() {
+        slog::showLog('绑定work');
         $this->ws_http_server->on('WorkerStart', [new worker(), 'start']);
     }
 

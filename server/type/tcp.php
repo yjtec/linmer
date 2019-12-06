@@ -2,6 +2,8 @@
 
 namespace server\type;
 
+use server\slog;
+
 /**
  * Description of tcp
  *
@@ -12,11 +14,11 @@ class tcp extends base {
     public $uni;
 
     public function conn($serv, $fd) {
-        echo "tcp,conn." . PHP_EOL;
+        slog::showLog('收到tcp连接');
     }
 
     public function recv($serv, $fd, $threadId, $data) {
-        echo "tcp,recv." . $data . PHP_EOL;
+        slog::showLog('tcp收到数据：' . $data);
         $this->uni->Msg = json_decode($data, true);
         $msg = $this->uni->doMsg();
         if (!$msg) {

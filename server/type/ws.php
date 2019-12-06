@@ -12,16 +12,17 @@ class ws extends base {
     public $uni;
 
     public function open($ws, $request) {
-        echo "ws,open." . PHP_EOL;
+        slog::showLog('收到ws连接：open');
     }
 
     public function msg($ws, $frame) {
+        slog::showLog('收到ws数据：' . $frame->data);
         echo "ws,msg." . $frame->data . PHP_EOL;
         $this->sendMsg($ws, $frame->fd, "receive from {$frame->fd}:{$frame->data},opcode:{$frame->opcode},fin:{$frame->finish}\n");
     }
 
     public function cls($ws, $fd) {
-        echo "ws,cls." . PHP_EOL;
+        slog::showLog('关闭ws连接');
     }
 
     public function sendMsg($context, $user, $msg) {

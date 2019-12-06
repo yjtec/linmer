@@ -2,6 +2,7 @@
 
 namespace server\uni\service;
 
+use server\slog;
 use server\uni\event;
 use server\uni\service;
 
@@ -19,6 +20,7 @@ class register extends event {
     }
 
     public function run() {
+        slog::showLog('统一消息处理：register');
         $msg = $this->checkMsg($this->uni->Msg);
         if (!$msg) {
             return false;

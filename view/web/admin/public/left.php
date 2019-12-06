@@ -24,10 +24,13 @@
                 <a href="#"><i class="fa fa-jsfiddle fa-fw"></i> 服务中心<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="/admin/ecs">生产者</a>
+                        <a href="/admin/service">生产者</a>
                     </li>
                     <li>
-                        <a href="/admin/safeGroup">消费者</a>
+                        <a href="/admin/consumer">消费者</a>
+                    </li>
+                    <li>
+                        <a href="/admin/dispatch">更新推送</a>
                     </li>
                 </ul>
             </li>

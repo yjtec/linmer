@@ -15,7 +15,7 @@ class base extends Controller {
 
     public function checkLogin() {
         session_start();
-        $this->admin = json_decode($_SESSION['admin'], true);
+        $this->admin = isset($_SESSION['admin']) ? json_decode($_SESSION['admin'], true) : [];
         if (!isset($this->admin['acc']) || !$this->admin['acc']) {
             header('Location:/admin/login');
             exit;

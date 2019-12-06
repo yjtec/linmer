@@ -21,18 +21,30 @@ class platform {
 
     public static function del($group, $host) {
         $key = self::getKey($group, $host);
+        return self::delByKey($key);
+    }
+
+    public static function delByKey($key) {
         redis::delHash($key, static::$platform);
         return $key;
     }
 
     public static function update($group, $host, $data) {
         $key = self::getKey($group, $host);
+        return self::updateByKey($key, $data);
+    }
+
+    public static function updateByKey($key, $data) {
         redis::updateHash($key, $data, static::$platform);
         return $key;
     }
 
     public static function get($group, $host) {
         $key = self::getKey($group, $host);
+        return self::getByKey($key);
+    }
+
+    public static function getByKey($key) {
         $data = redis::getHash($key, static::$platform);
         return empty($data) ? [] : json_decode($data, true);
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace server\uni;
+namespace server\uni\consumer;
 
 /**
  * 通知
@@ -9,46 +9,48 @@ namespace server\uni;
  */
 class dispatch {
 
-    public static function startDispatch($svc) {
-        $function = isset($svc['heart_type']) && $svc['heart_type'] ? $svc['heart_type'] : "default";
+    public static function startDispatch($consumer, $service) {
+        $function = isset($consumer['dispatch_type']) && $consumer['dispatch_type'] ? $consumer['dispatch_type'] : "default";
         switch ($function) {
             case 'http':
-                return self::http($svc);
+                return self::http($consumer, $service);
             case 'ws':
-                return self::ws($svc);
+                return self::ws($consumer, $service);
             case 'tcp':
-                return self::tcp($svc);
+                return self::tcp($consumer, $service);
             default :
-                return self::default($svc);
+                return self::default($consumer, $service);
         }
     }
 
-    public static function http($svc) {
+    public static function http($consumer, $service) {
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $svc['heart_url']);
+        curl_setopt($ch, CURLOPT_URL, $consumer['dispatch_url']);
         // 设置cURL 参数，要求结果保存到字符串中还是输出到屏幕上。
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($service));
         $t1 = microtime(true);
-        curl_exec($ch);
+        $rs = curl_exec($ch);
         $t = microtime(true) - $t1;
         $curlInfo = curl_getinfo($ch);
         curl_close($ch);
-        return $curlInfo['http_code'] == '200' ? $curlInfo['total_time'] : false;
+        return $rs == 'success' ? $curlInfo['total_time'] : false;
     }
 
-    public static function ws($svc) {
+    public static function ws($consumer, $service) {
         
     }
 
-    public static function tcp($svc) {
+    public static function tcp($consumer, $service) {
         
     }
 
-    public static function default($svc) {
-        return self::http($svc);
+    public static function default($consumer, $service) {
+        return self::http($consumer, $service);
     }
 
-    public static function checkResult($svc, $data) {
+    public static function checkResult($consumer, $service, $data) {
         
     }
 

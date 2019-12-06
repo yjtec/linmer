@@ -17,19 +17,19 @@ class service extends platform {
     public static function add($group, $host, $data) {
         $data['status'] = 1;
         $key = parent::add($group, $host, $data);
-        consumer::addDispatch($group, $host);
+        dispatch::addDispatch($group, $host);
         return $key;
     }
 
     public static function del($group, $host) {
         $key = parent::del($group, $host);
-        consumer::addDispatch($group, $host);
+        dispatch::addDispatch($group, $host);
         return $key;
     }
 
     public static function update($group, $host, $data) {
         $key = parent::update($group, $host, $data);
-        consumer::addDispatch($group, $host);
+        dispatch::addDispatch($group, $host);
         return $key;
     }
 
@@ -49,7 +49,7 @@ class service extends platform {
         $svc['live_time'] = -1;
         $svc['status'] = $status;
         redis::updateHash($key, $svc, self::$platform);
-        consumer::addDispatch($key);
+        dispatch::addDispatch($group, $host);
         return 1;
     }
 

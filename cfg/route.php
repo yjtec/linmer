@@ -15,7 +15,15 @@ if (PHP_SAPI === 'cli') {
     Router::get("/admin\/upPwd/u", "web\\admin\\admin", 'upPwd');
     Router::post("/admin\/upPwd/u", "web\\admin\\admin", 'doUpPwd');
 
-
+    //服务提供者，生产者
+    Router::get("/admin\/service/u", "web\\admin\\server\\service", 'index');
+    Router::post("/admin\/service/u", "web\\admin\\server\\service", 'getList');
+    //服务订阅者，消费者
+    Router::get("/admin\/consumer/u", "web\\admin\\server\\consumer", 'index');
+    Router::post("/admin\/consumer/u", "web\\admin\\server\\consumer", 'getList');
+    //服务更新推送，消费者
+    Router::get("/admin\/dispatch/u", "web\\admin\\server\\consumer", 'index');
+    Router::post("/admin\/dispatch/u", "web\\admin\\server\\consumer", 'getList');
 
 
 
